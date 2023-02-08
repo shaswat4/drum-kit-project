@@ -5,12 +5,18 @@ for (var i = 0; i < btns.length; i++) {
 
     //playSound( "sounds/crash.mp3" );
     
-    console.log(this);
-    console.log( this.innerHTML);
+    // console.log(this);
+    // console.log( this.innerHTML);
 
     makeSound(this.innerHTML);
   });
 }
+
+document.addEventListener("keypress" ,
+  function (event){
+    makeSound(event.key);
+  }
+);
 
 function playSound( path ){
   var audio = new Audio( path );
