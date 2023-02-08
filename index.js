@@ -1,3 +1,5 @@
+
+//click event listener
 var btns = document.querySelectorAll(".drum");
 
 for (var i = 0; i < btns.length; i++) {
@@ -9,15 +11,19 @@ for (var i = 0; i < btns.length; i++) {
     // console.log( this.innerHTML);
 
     makeSound(this.innerHTML);
+    buttonAnimation(this.innerHTML);
   });
 }
 
+//keypress event listner
 document.addEventListener("keypress" ,
   function (event){
     makeSound(event.key);
+    buttonAnimation(event.key);
   }
 );
 
+//playing sound 
 function playSound( path ){
   var audio = new Audio( path );
   audio.play();
@@ -57,5 +63,20 @@ function makeSound( key ){
       default :
       console.log(key);
   }
+
+}
+
+//button animation after click or keypress
+function buttonAnimation( key ){
+  var activeBtn = document.querySelector("." +key );
+
+  activeBtn.classList.toggle("pressed");
+
+  setTimeout( 
+    function (){
+      activeBtn.classList.toggle("pressed");
+    },
+    200
+  );
 
 }
